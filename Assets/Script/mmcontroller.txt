@@ -1,0 +1,19 @@
+movementcontroller : c'est la classe qui contient les mecanismes du jeu (les composant necessaire pour que le jeu marche)
+cette classe est responsable de la grille du jeu ( larene du jeu ) qui est represnté sous la forme d'un matrice de 2 dimensions
+20*10 et chaque piece est une sous matrice de 2d 2*2 
+le principe qu'on a utilisé est simple et efficace :
+    - avant de bouger une piece on verifie c'est la movement est possible en calculant sa position actuelle et comparant
+    le sous matrice du piece avec la matrice du jeu en verfiant si la position actuel est vide et ne contient pas dautre piece
+        - si oui : on applique une transformation selon le deplacement dans le jeu  par exp ( 0,-1) c pour descendre la piece 
+        d'un pas ; cette transformation va etre transmise comme une valeur a ajouter dans chaque case de la sous matrice du piece
+            - on verifie mtn si la nouvelle position est vide dans la grille du jeu si elle est vide alors cette movment est possible 
+            on met a jour la grille du jeu 
+            sinon on remterre les changements et la piece reste dans sa place.
+        - si non alors la piece ne peut pas se deplacer encore alors on aura besoin d'invoker une nouvelle piece
+        avant dinvoker une nouvelle piece on doit avant verifier si la grille n'est pas plein a certain seuil en parcourant 
+        la matrice en verifiant lexistance d'un element ou pas , 
+        si le seuil est attient alors le jeu est terminé on ne peut pas ajouter une nouvelle piece et le partie est terminé
+        sinon le partie continue et une nouvelle piece est ajouté 
+        a chaque fois une verification pour les lignes complets est effectué , si une ligne est complet alors on doit le supprimer:
+            - on fais des decalages des element de la grille du jeu ( la matrice principal) depuis la ligne la plus haut en descandant vers la ligne 
+            complete
